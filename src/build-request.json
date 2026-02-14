@@ -1,0 +1,161 @@
+{
+  "kind": "build_request",
+  "title": "Interactive 3D cafe website with contour-line theme, animations, core pages, and export/download page",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a mobile-friendly interactive 3D cafe room experience on the Home page using Three.js (React Three Fiber), allowing users to explore/navigate the interior with simple controls that work on phone and tablet (e.g., drag to look, pinch/scroll to zoom, and an easy-to-use on-screen navigation option).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Make a 3d room type website for cafe very interative",
+          "Interior cafe space users can navigate but easy to navigate on phone or tablet too",
+          "All of the above but make it easy to navigate"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Home page renders an interactive 3D scene representing a cafe interior (room + a few recognizable props like tables/chairs/counter).",
+        "Controls are usable on mobile/tablet (touch gestures supported) and on desktop (mouse supported).",
+        "Scene performance is acceptable on mid-range mobile devices (no obvious jank during basic navigation).",
+        "User can reset view/position via a clearly visible UI control."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Apply a consistent contour-line visual theme across the entire site, including a coherent color palette (non-blue/purple by default) and typography, and ensure the theme is used consistently in layout, backgrounds, and UI elements.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "make theme contour lines and good colors"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All pages share a consistent contour-line themed look and feel (background pattern and/or section styling).",
+        "A single cohesive color palette is applied consistently across navigation, buttons, headings, and backgrounds.",
+        "Typography is consistent across pages (headings/body) and remains readable over the contour-line visuals."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add smooth, sitewide animations that enhance interactivity while keeping navigation easy (e.g., page transitions, hover/tap micro-interactions, subtle parallax/ambient motion, and gentle 3D scene ambient animation).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "make it animated too",
+          "very interative"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Primary UI elements (nav links, buttons, cards/sections) have subtle hover/tap animations.",
+        "Page navigation includes a smooth transition (non-blocking, maintains usability).",
+        "3D scene includes at least one ambient animation (e.g., subtle light movement, steam effect, or gentle object motion) that does not hinder controls."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement core site pages with placeholder content in English: Home (3D room), Menu, About Us, and Contact Us; include a persistent navigation header and a mobile-friendly menu.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "add menu page about us page and contact us page",
+          "No, use placeholder content for now",
+          "Use English for any user-facing text in the build request."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Routes/pages exist for Home, Menu, About Us, and Contact Us.",
+        "Menu page shows placeholder menu sections/items (e.g., coffee, tea, pastries) with prices and short descriptions (placeholders).",
+        "About Us page contains placeholder narrative content and a small set of highlight bullets (placeholders).",
+        "Contact Us page shows placeholder contact details and includes a contact form UI (name/email/message) with a non-sending placeholder submit behavior (e.g., local success toast/message).",
+        "Navigation works on desktop and mobile (collapsible mobile menu)."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add an Export/Download page that provides a downloadable package of the website intended for later WordPress import/editing; include clear on-page instructions (in English) describing what the download contains and general steps the user can take to use it with WordPress/Elementor.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "add a extra page where I can download this website as is and import in wordpress and edit using elementor"
+        ]
+      },
+      "acceptanceCriteria": [
+        "An Export/Download page exists and is accessible from the main navigation.",
+        "Page includes a prominent download control that downloads a single archive file (e.g., .zip) from static assets.",
+        "Page includes clearly written instructions stating that this is a static export package and outlining general next steps for WordPress/Elementor usage.",
+        "All user-facing text on this page is in English."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Add minimal backend support (Motoko, single actor) only if needed for the Export/Download workflow (e.g., returning metadata/version info); otherwise keep the app frontend-only for content and interactions.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "add a extra page where I can download this website as is"
+        ]
+      },
+      "acceptanceCriteria": [
+        "If backend endpoints are added, they are contained within the single main actor and are limited to non-essential metadata (no complex state).",
+        "Core site (Home/Menu/About/Contact/Export) functions end-to-end without requiring user authentication."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Add a lightweight, accessible layout system that keeps content readable over the contour-line theme (contrast, spacing, responsive breakpoints), including a footer with placeholder business details and links to core pages.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "good colors",
+          "make it easy to navigate"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Text contrast meets basic accessibility expectations against backgrounds.",
+        "Layout is responsive (mobile/tablet/desktop) with sensible spacing and typography scaling.",
+        "Footer appears on all pages with placeholder address/hours and links to Menu/About/Contact/Export."
+      ]
+    }
+  ],
+  "constraints": [
+    "Use React + TypeScript with Tailwind, shadcn UI components, and React Query as applicable.",
+    "Do not modify files under frontend/src/components/ui or other immutable paths provided by the platform; compose those components instead.",
+    "Backend must remain a single Motoko actor (no additional backend services).",
+    "No third-party authentication providers; only Internet Identity is supported (but not required for this build).",
+    "Use placeholder content where real cafe details are not provided, and keep user-facing text in English."
+  ],
+  "nonGoals": [
+    "Implementing an actual WordPress plugin, direct Elementor API integration, or one-click automatic import into WordPress.",
+    "Building a full CMS/admin editor inside this app.",
+    "Adding payments, reservations, real-time chat, or external database integrations."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Seamless contour-line pattern background, subtle and low-contrast (contour-pattern.dim_2048x2048.png)",
+      "Hero background illustration combining cafe ambiance with contour-line aesthetic (cafe-hero-contour.dim_1920x1080.png)"
+    ],
+    "edits": []
+  }
+}

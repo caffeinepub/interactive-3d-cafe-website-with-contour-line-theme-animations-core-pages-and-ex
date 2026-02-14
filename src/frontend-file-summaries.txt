@@ -1,0 +1,18 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, defining routes for Home, Menu, About, Contact, and Export pages, wrapped with ThemeProvider and Toaster for notifications.",
+  "frontend/src/index.css": "Global styles with OKLCH color system featuring warm cafe palette (browns, beiges, terracotta), contour-line background utilities, custom animations (fade-in, slide-up, float), and glass-card effects.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with custom cafe color palette, Playfair Display font for headings, custom shadows (soft, glow), and animation keyframes for smooth transitions.",
+  "frontend/src/components/SiteLayout.tsx": "Shared layout wrapper component that applies ContourBackground, SiteHeader, AnimatedPageContainer, and SiteFooter to all pages.",
+  "frontend/src/components/ContourBackground.tsx": "Fixed background component that applies the contour-line pattern image with low opacity across the entire site.",
+  "frontend/src/components/AnimatedPageContainer.tsx": "Page transition wrapper that provides smooth fade and slide-up animations when navigating between routes.",
+  "frontend/src/components/SiteHeader.tsx": "Responsive navigation header with logo, desktop menu, and mobile sheet menu using shadcn/ui components, highlighting active routes.",
+  "frontend/src/components/SiteFooter.tsx": "Site footer with brand info, quick links, contact details, hours, and Caffeine.ai attribution with UTM tracking.",
+  "frontend/src/pages/HomePage.tsx": "Home page featuring interactive 3D cafe scene with React Three Fiber, hero section with glass-card overlay, CTA buttons, and features grid.",
+  "frontend/src/pages/MenuPage.tsx": "Menu page displaying coffee, specialty drinks, and pastries in responsive card grid with prices, descriptions, and badges for popular/new items.",
+  "frontend/src/pages/AboutPage.tsx": "About page with cafe story, values, and highlights grid showcasing quality, community, innovation, and awards using cards and icons.",
+  "frontend/src/pages/ContactPage.tsx": "Contact page with form (name, email, message) showing local success toast, plus contact information cards with location, phone, email, and hours.",
+  "frontend/src/pages/ExportDownloadPage.tsx": "Export page with download button for static site archive, package contents list, and step-by-step WordPress/Elementor integration instructions.",
+  "frontend/src/components/three/CafeRoomScene.tsx": "3D cafe interior scene using React Three Fiber with floor, walls, counter, coffee machine with animated steam, tables, chairs, plant, and ambient lighting.",
+  "frontend/src/components/three/CafeControlsOverlay.tsx": "UI overlay for 3D scene with navigation help card (drag, scroll, pinch instructions), reset view button, and toggle help visibility.",
+  "frontend/src/hooks/useQueries.ts": "Placeholder file for future React Query hooks if backend integration is needed; currently empty as app is frontend-only."
+}

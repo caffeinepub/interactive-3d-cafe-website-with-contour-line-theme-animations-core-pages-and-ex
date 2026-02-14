@@ -1,0 +1,232 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Interactive 3D Cafe Site (Contour Theme, Animations, Core Pages, Export Download)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Build a mobile-friendly interactive 3D cafe room on the Home page with touch/mouse controls, on-screen navigation, and a reset view control (React Three Fiber).",
+      "acceptanceCriteria": [
+        "Home page renders an interactive 3D scene representing a cafe interior (room + a few recognizable props like tables/chairs/counter).",
+        "Controls are usable on mobile/tablet (touch gestures supported) and on desktop (mouse supported).",
+        "Scene performance is acceptable on mid-range mobile devices (no obvious jank during basic navigation).",
+        "User can reset view/position via a clearly visible UI control."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "create",
+          "description": "Create the Home page that hosts the 3D canvas, a lightweight hero section, and clearly visible UI controls for navigation and reset; keep layout mobile-first and ensure the 3D area is responsive."
+        },
+        {
+          "path": "frontend/src/components/three/CafeRoomScene.tsx",
+          "operation": "create",
+          "description": "Implement the 3D cafe interior using React Three Fiber with simple geometry/props (room shell, tables/chairs/counter) and at least one ambient animation (e.g., subtle light/steam motion) while keeping polycount/materials simple for mobile performance."
+        },
+        {
+          "path": "frontend/src/components/three/CafeControlsOverlay.tsx",
+          "operation": "create",
+          "description": "Add an on-screen navigation overlay for touch devices (e.g., directional movement + reset button) that integrates with the 3D camera/controls without blocking core interactions."
+        },
+        {
+          "path": "frontend/src/components/three/useCafeNavigation.ts",
+          "operation": "create",
+          "description": "Add a small hook/util to coordinate camera position/target updates for both gesture controls (drag/pinch/scroll) and the on-screen navigation buttons, including a deterministic reset state."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Wire the Home page route so it is reachable via the main router, and ensure the Home page is the default route."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Apply a consistent contour-line visual theme sitewide with a cohesive non-blue/purple palette and readable typography.",
+      "acceptanceCriteria": [
+        "All pages share a consistent contour-line themed look and feel (background pattern and/or section styling).",
+        "A single cohesive color palette is applied consistently across navigation, buttons, headings, and backgrounds.",
+        "Typography is consistent across pages (headings/body) and remains readable over the contour-line visuals."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Define global theme tokens (CSS variables) for a cohesive non-blue/purple palette, set base typography, and apply the contour-line background using the generated image at frontend/public/assets/generated/contour-pattern.dim_2048x2048.png with low-contrast styling."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust Tailwind theme extensions (if needed) to align with the contour theme tokens (colors/typography/animations) and ensure utilities support the sitewide design system."
+        },
+        {
+          "path": "frontend/src/components/ContourBackground.tsx",
+          "operation": "create",
+          "description": "Create a reusable background wrapper (or decorative layer component) that consistently applies the contour-line theme to page sections without harming readability."
+        },
+        {
+          "path": "frontend/src/components/SiteLayout.tsx",
+          "operation": "create",
+          "description": "Implement a shared layout component that applies consistent spacing, readable content surfaces over the contour background, and global typography styling across all pages."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add smooth sitewide animations: micro-interactions for UI elements, smooth page transitions, and gentle ambient motion within the 3D scene.",
+      "acceptanceCriteria": [
+        "Primary UI elements (nav links, buttons, cards/sections) have subtle hover/tap animations.",
+        "Page navigation includes a smooth transition (non-blocking, maintains usability).",
+        "3D scene includes at least one ambient animation (e.g., subtle light movement, steam effect, or gentle object motion) that does not hinder controls."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/AnimatedPageContainer.tsx",
+          "operation": "create",
+          "description": "Create a lightweight page transition wrapper (e.g., fade/slide using CSS + React state) that animates between routes without blocking navigation."
+        },
+        {
+          "path": "frontend/src/components/SiteHeader.tsx",
+          "operation": "create",
+          "description": "Implement a persistent navigation header with subtle hover/tap micro-interactions. Use shadcn-ui components (e.g., Button, Sheet/Dropdown equivalents if present) to ensure accessibility and consistent UI styling. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/ui-kit.tsx",
+          "operation": "create",
+          "description": "Create a small composition layer that re-exports/selects shadcn-ui primitives used by the app (without modifying frontend/src/components/ui). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/three/CafeRoomScene.tsx",
+          "operation": "modify",
+          "description": "Ensure the 3D cafe scene includes at least one gentle ambient animation implemented via the render loop while keeping controls responsive."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap routed pages with the page transition container so navigation between Home/Menu/About/Contact/Export has smooth transitions."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Implement core pages (Home, Menu, About Us, Contact Us) with placeholder English content plus persistent header navigation and a mobile-friendly menu.",
+      "acceptanceCriteria": [
+        "Routes/pages exist for Home, Menu, About Us, and Contact Us.",
+        "Menu page shows placeholder menu sections/items (e.g., coffee, tea, pastries) with prices and short descriptions (placeholders).",
+        "About Us page contains placeholder narrative content and a small set of highlight bullets (placeholders).",
+        "Contact Us page shows placeholder contact details and includes a contact form UI (name/email/message) with a non-sending placeholder submit behavior (e.g., local success toast/message).",
+        "Navigation works on desktop and mobile (collapsible mobile menu)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/MenuPage.tsx",
+          "operation": "create",
+          "description": "Create the Menu page with placeholder sections/items in English (coffee/tea/pastries) using responsive cards/sections; use composed shadcn-ui components (e.g., Card, Button where available) for consistent styling. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/AboutPage.tsx",
+          "operation": "create",
+          "description": "Create the About Us page with placeholder narrative text and a short list of highlight bullets; ensure readability over the contour theme."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "create",
+          "description": "Create the Contact Us page with placeholder contact details and an accessible contact form UI (name/email/message) that shows a local-only success confirmation (no sending). Use composed shadcn-ui form primitives where available. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/SiteHeader.tsx",
+          "operation": "modify",
+          "description": "Add navigation links for Home, Menu, About Us, Contact Us, and ensure a collapsible mobile menu (using shadcn-ui components where applicable). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register routes for Home, Menu, About Us, and Contact Us, and ensure the header layout persists across page navigation."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add an Export/Download page with a prominent download control for a static archive file and clear English instructions for WordPress/Elementor usage.",
+      "acceptanceCriteria": [
+        "An Export/Download page exists and is accessible from the main navigation.",
+        "Page includes a prominent download control that downloads a single archive file (e.g., .zip) from static assets.",
+        "Page includes clearly written instructions stating that this is a static export package and outlining general next steps for WordPress/Elementor usage.",
+        "All user-facing text on this page is in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ExportDownloadPage.tsx",
+          "operation": "create",
+          "description": "Create the Export/Download page with a prominent download control (static file link) and clear English instructions describing what the archive contains and general next steps for using it with WordPress/Elementor."
+        },
+        {
+          "path": "frontend/public/assets/export/cafe-site-export.zip",
+          "operation": "create",
+          "description": "Add a placeholder static export archive file to be downloaded from the Export/Download page."
+        },
+        {
+          "path": "frontend/src/components/SiteHeader.tsx",
+          "operation": "modify",
+          "description": "Add an Export/Download link to the main navigation (desktop and mobile)."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register the Export/Download page route and ensure it participates in page transitions/layout."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Keep the app frontend-only for content and interactions; for Export/Download, avoid backend reliance unless absolutely necessary (frontend should function end-to-end without auth).",
+      "acceptanceCriteria": [
+        "If backend endpoints are added, they are contained within the single main actor and are limited to non-essential metadata (no complex state).",
+        "Core site (Home/Menu/About/Contact/Export) functions end-to-end without requiring user authentication."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ExportDownloadPage.tsx",
+          "operation": "modify",
+          "description": "Ensure the download workflow works purely via static assets (no backend required) and that the page content is accessible without authentication."
+        },
+        {
+          "path": "frontend/src/main.tsx",
+          "operation": "modify",
+          "description": "Confirm the app does not require user login to access core pages by keeping Internet Identity provider passive/optional and not gating routes behind authentication."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Add an accessible, responsive layout system (contrast/spacing/breakpoints) and a footer with placeholder business details and links to core pages.",
+      "acceptanceCriteria": [
+        "Text contrast meets basic accessibility expectations against backgrounds.",
+        "Layout is responsive (mobile/tablet/desktop) with sensible spacing and typography scaling.",
+        "Footer appears on all pages with placeholder address/hours and links to Menu/About/Contact/Export."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/SiteFooter.tsx",
+          "operation": "create",
+          "description": "Create a footer shown on all pages containing placeholder address/hours and links to Menu/About/Contact/Export, styled for readability over the contour theme."
+        },
+        {
+          "path": "frontend/src/components/SiteLayout.tsx",
+          "operation": "modify",
+          "description": "Integrate the footer into the shared layout and ensure consistent responsive spacing/typography scaling across pages."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Refine global contrast/readability rules (e.g., background overlays/surfaces, link states, focus rings) to meet basic accessibility expectations over the contour-line visuals, and wire in the generated hero image at frontend/public/assets/generated/cafe-hero-contour.dim_1920x1080.png for the Home hero section styling."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap all routes with the shared SiteLayout so header/footer and responsive layout are applied consistently sitewide."
+        }
+      ]
+    }
+  ]
+}

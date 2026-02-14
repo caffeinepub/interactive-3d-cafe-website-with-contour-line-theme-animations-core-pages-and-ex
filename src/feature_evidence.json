@@ -1,0 +1,150 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-mobile-friendly-interactive-3d-cafe-room-experience-on-the-home-page-using-three-js-react-three-fiber-allowing-users-to-explore-navigate-the-interior-with-simple-controls-that-work-on-phone-and-tablet-e-g-drag-to-look-pinch-scroll-to-zoom-and-an-easy-to-use-on-screen-navigation-option",
+      "featureTitle": "Create a mobile-friendly interactive 3D cafe room experience on the Home page using Three.js (React Three Fiber), allowing users to explore/navigate the interior with simple controls that work on phone and tablet (e.g., drag to look, pinch/scroll to zoom, and an easy-to-use on-screen navigation option).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/three/CafeControlsOverlay.tsx",
+        "frontend/src/components/three/CafeRoomScene.tsx",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-consistent-contour-line-visual-theme-across-the-entire-site-including-a-coherent-color-palette-non-blue-purple-by-default-and-typography-and-ensure-the-theme-is-used-consistently-in-layout-backgrounds-and-ui-elements",
+      "featureTitle": "Apply a consistent contour-line visual theme across the entire site, including a coherent color palette (non-blue/purple by default) and typography, and ensure the theme is used consistently in layout, backgrounds, and UI elements.",
+      "files": [
+        "frontend/src/components/ContourBackground.tsx",
+        "frontend/src/components/SiteLayout.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-smooth-sitewide-animations-that-enhance-interactivity-while-keeping-navigation-easy-e-g-page-transitions-hover-tap-micro-interactions-subtle-parallax-ambient-motion-and-gentle-3d-scene-ambient-animation",
+      "featureTitle": "Add smooth, sitewide animations that enhance interactivity while keeping navigation easy (e.g., page transitions, hover/tap micro-interactions, subtle parallax/ambient motion, and gentle 3D scene ambient animation).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/AnimatedPageContainer.tsx",
+        "frontend/src/components/SiteHeader.tsx",
+        "frontend/src/components/three/CafeRoomScene.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-core-site-pages-with-placeholder-content-in-english-home-3d-room-menu-about-us-and-contact-us-include-a-persistent-navigation-header-and-a-mobile-friendly-menu",
+      "featureTitle": "Implement core site pages with placeholder content in English: Home (3D room), Menu, About Us, and Contact Us; include a persistent navigation header and a mobile-friendly menu.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/SiteHeader.tsx",
+        "frontend/src/pages/AboutPage.tsx",
+        "frontend/src/pages/ContactPage.tsx",
+        "frontend/src/pages/MenuPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-an-export-download-page-that-provides-a-downloadable-package-of-the-website-intended-for-later-wordpress-import-editing-include-clear-on-page-instructions-in-english-describing-what-the-download-contains-and-general-steps-the-user-can-take-to-use-it-with-wordpress-elementor",
+      "featureTitle": "Add an Export/Download page that provides a downloadable package of the website intended for later WordPress import/editing; include clear on-page instructions (in English) describing what the download contains and general steps the user can take to use it with WordPress/Elementor.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/SiteHeader.tsx",
+        "frontend/src/pages/ExportDownloadPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-minimal-backend-support-motoko-single-actor-only-if-needed-for-the-export-download-workflow-e-g-returning-metadata-version-info-otherwise-keep-the-app-frontend-only-for-content-and-interactions",
+      "featureTitle": "Add minimal backend support (Motoko, single actor) only if needed for the Export/Download workflow (e.g., returning metadata/version info); otherwise keep the app frontend-only for content and interactions.",
+      "files": [
+        "frontend/src/main.tsx",
+        "frontend/src/pages/ExportDownloadPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-lightweight-accessible-layout-system-that-keeps-content-readable-over-the-contour-line-theme-contrast-spacing-responsive-breakpoints-including-a-footer-with-placeholder-business-details-and-links-to-core-pages",
+      "featureTitle": "Add a lightweight, accessible layout system that keeps content readable over the contour-line theme (contrast, spacing, responsive breakpoints), including a footer with placeholder business details and links to core pages.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/SiteFooter.tsx",
+        "frontend/src/components/SiteLayout.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
